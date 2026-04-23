@@ -6,13 +6,23 @@
 </head>
 <body>
 
-<div onclick="flipCard()" style="cursor:pointer; font-size:20px;">
-  <p id="content">Chargement...</p>
+<h2>Choisir un deck :</h2>
+
+<select id="deckSelector" onchange="loadDeck()">
+  <option value="math.json">Math</option>
+  <option value="histoire.json">Histoire</option>
+  <option value="anglais.json">Anglais</option>
+</select>
+
+<div onclick="flipCard()" style="margin-top:20px; cursor:pointer; font-size:20px;">
+  <p id="content">Choisis un deck</p>
 </div>
+
+<br>
 
 <button onclick="prevCard()">⬅️</button>
 <button onclick="nextCard()">➡️</button>
 
-<script src="flashcards.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
