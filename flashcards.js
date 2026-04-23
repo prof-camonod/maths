@@ -3,7 +3,7 @@ let index = 0;
 let showAnswer = false;
 
 // Charger le JSON
-fetch("flashcards.json")
+fetch("cards.json")
   .then(response => response.json())
   .then(data => {
     flashcards = data;
