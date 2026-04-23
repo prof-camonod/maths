@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Flashcards</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f5f5f5;
+    }
+
+    .card {
+      width: 300px;
+      height: 200px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .controls {
+      position: absolute;
+      bottom: 20px;
+    }
+
+    button {
+      padding: 10px 15px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      background: #007BFF;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card" onclick="flipCard()">
+  <span id="content"></span>
+</div>
+
+<div class="controls">
+  <button onclick="prevCard()">⬅️</button>
+  <button onclick="nextCard()">➡️</button>
+</div>
+
+<script>
+  const flashcards = [
+    { question: "Capitale de la France ?", answer: "Paris" },
+    { question: "2 + 2 ?", answer: "4" },
+    { question: "Langage utilisé avec HTML ?", answer: "JavaScript" }
+  ];
+
+  let index = 0;
+  let showAnswer = false;
+
+  function displayCard() {
+    const card = flashcards[index];
+    document.getElementById("content").textContent =
+      showAnswer ? card.answer : card.question;
+  }
+
+  function flipCard() {
+    showAnswer = !showAnswer;
+    displayCard();
+  }
+
+  function nextCard() {
+    index = (index + 1) % flashcards.length;
+    showAnswer = false;
+    displayCard();
+  }
+
+  function prevCard() {
+    index = (index - 1 + flashcards.length) % flashcards.length;
+    showAnswer = false;
+    displayCard();
+  }
+
+  displayCard();
+</script>
+
+</body>
+</html>
